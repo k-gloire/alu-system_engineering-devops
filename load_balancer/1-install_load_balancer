@@ -8,7 +8,6 @@ global
     user haproxy
     group haproxy
     daemon
-    h1-case-adjust x-served-by X-Served-By
 
 defaults
     mode http
@@ -18,12 +17,10 @@ defaults
 
 frontend http_front
     bind *:80
-    option h1-case-adjust-bogus-client
     default_backend http_back
 
 backend http_back
     balance roundrobin
-    option h1-case-adjust-bogus-server
     server 7416-web-01 13.40.32.202:80 check
     server 7416-web-02 35.178.172.14:80 check
 CFG
