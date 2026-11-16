@@ -5,26 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 - Lost in space</title>
 <style>
-  body { margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at top, #1b2a6b, #05071a); color: #fff; font-family: Arial, sans-serif; text-align: center; overflow: hidden; }
-  h1 { font-size: 9rem; margin: 0; letter-spacing: 1rem; text-shadow: 0 0 30px #7aa2ff; }
-  p { font-size: 1.4rem; margin: 10px 0; }
-  .rocket { font-size: 5rem; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-10deg); } 50% { transform: translateY(-30px) rotate(10deg); } }
-  a { margin-top: 25px; padding: 12px 28px; background: #7aa2ff; color: #05071a; text-decoration: none; border-radius: 30px; font-weight: bold; }
-  a:hover { background: #fff; }
-  .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 2s infinite; }
-  @keyframes twinkle { 50% { opacity: 0.2; } }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Georgia, serif;
+    color: #fff;
+    background: radial-gradient(circle at 50% 30%, #2b2d6e, #0b0c2a 70%);
+    overflow: hidden;
+  }
+  .stars, .stars::after {
+    content: "";
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 80px 120px #fff, 220px 60px #fff, 340px 200px #fff,
+      480px 90px #fff, 620px 250px #fff, 760px 140px #fff,
+      900px 60px #fff, 1040px 220px #fff, 150px 420px #fff,
+      300px 520px #fff, 560px 460px #fff, 840px 500px #fff;
+    animation: twinkle 3s infinite alternate;
+  }
+  .stars::after { top: 180px; left: 100px; animation-delay: 1.5s; }
+  @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
+  .moon {
+    width: 120px; height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #f4f1de;
+    box-shadow: inset -18px -10px 0 #d9d4b8, 0 0 40px rgba(244,241,222,0.5);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+  h1 { font-size: 6rem; letter-spacing: 8px; }
+  h2 { font-size: 1.6rem; margin: 10px 0; font-style: italic; }
+  p { margin-bottom: 24px; opacity: 0.8; }
+  a {
+    display: inline-block;
+    padding: 12px 28px;
+    color: #0b0c2a;
+    background: #f4f1de;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover { background: #ffd166; }
 </style>
 </head>
 <body>
-  <div class="star" style="top:10%;left:15%;width:4px;height:4px"></div>
-  <div class="star" style="top:25%;left:80%;width:3px;height:3px"></div>
-  <div class="star" style="top:70%;left:25%;width:5px;height:5px"></div>
-  <div class="star" style="top:85%;left:70%;width:3px;height:3px"></div>
-  <div class="rocket">🚀</div>
-  <h1>404</h1>
-  <p>Ceci n'est pas une page</p>
-  <p>Looks like this page drifted off into space.</p>
-  <a href="/">Take me home</a>
+  <div class="stars"></div>
+  <div>
+    <div class="moon"></div>
+    <h1>404</h1>
+    <h2>Ceci n'est pas une page</h2>
+    <p>This page drifted off into space. Let's take you back home.</p>
+    <a href="/">Back to Earth</a>
+  </div>
 </body>
 </html>
