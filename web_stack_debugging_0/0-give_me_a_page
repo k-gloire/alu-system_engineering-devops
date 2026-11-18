@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Starts Apache so the container returns a page with Hello Holberton
+# Starts Apache and shows its status so the container returns Hello Holberton
 service apache2 start
+service apache2 status
