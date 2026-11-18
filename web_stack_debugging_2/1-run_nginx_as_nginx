@@ -2,9 +2,11 @@
 # Configure Nginx to run as the nginx user and listen on port 8080
 id nginx >/dev/null 2>&1 || useradd --system --no-create-home --shell /usr/sbin/nologin nginx
 sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
-sed -i 's#^pid .*#pid /run/nginx.pid;#' /etc/nginx/nginx.conf
 sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sites-available/default
 sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen [::]:8080 default_server ipv6only=on;/' /etc/nginx/sites-available/default
 chown -R nginx:nginx /var/lib/nginx /var/log/nginx
 pkill -x nginx || true
-service nginx start
+sleep 1
+touch /run/nginx.pid
+chown nginx:nginx /run/nginx.pid
+su -s /bin/sh nginx -c '/usr/sbin/nginx'
