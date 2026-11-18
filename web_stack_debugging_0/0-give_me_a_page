@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Starts Apache and shows its status so the container returns Hello Holberton
-service apache2 start
+# Restarts Apache and shows its status so the container returns Hello Holberton
+service apache2 restart
 service apache2 status
