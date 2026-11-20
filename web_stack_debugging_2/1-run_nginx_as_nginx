@@ -8,4 +8,7 @@ sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sit
 sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen [::]:8080 default_server ipv6only=on;/' /etc/nginx/sites-available/default
 chown -R nginx:nginx /var/lib/nginx /var/log/nginx
 pkill -x nginx || true
-service nginx start
+sleep 1
+touch /run/nginx.pid
+chown nginx:nginx /run/nginx.pid
+su -s /bin/sh nginx -c '/usr/sbin/nginx'
